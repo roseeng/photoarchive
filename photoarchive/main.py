@@ -1,6 +1,6 @@
+import sys
 import persist
 import photoarchive
-import sys
 
 folder = r"C:\Users\g\Pictures\Scannat"
 #print(photoarchive.filetypes)
