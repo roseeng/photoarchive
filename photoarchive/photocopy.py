@@ -1,9 +1,8 @@
 import piexif
 import os
 import datetime
-
-from pathlib import Path
 import shutil
+from pathlib import Path
 
 class PhotoCopy:
     destroot = "./Bilder"
@@ -83,7 +82,7 @@ class PhotoCopy:
 
 #PrintExif(r"C:\Users\g\Pictures\Gitarr\20130506_004442.jpg")
 
-PhotoCopy.PrintExif(r"C:\Users\g\Documents\Python\photoarchive\photoarchive\Bilder\2006\12\15\klassfotocroppad.jpg", all=True)
+#PhotoCopy.PrintExif(r"C:\Users\g\Documents\Python\photoarchive\photoarchive\Bilder\2006\12\15\klassfotocroppad.jpg", all=True)
 #allan =  PhotoCopy.CopyFile(r"C:\Users\g\Pictures\Scannat\110-film\2018-03-14_77.TIF")
 # allan = PhotoCopy.Uniquify(Path(r"C:\Users\g\Pictures\Scannat\110-film\2018-03-14_77.TIF"))
 # print(allan)

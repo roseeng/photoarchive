@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from filedata import Filedata
+from .filedata import Filedata
 import persist
 from photocopy import PhotoCopy
 
