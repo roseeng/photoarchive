@@ -59,9 +59,10 @@ class PhotoCopy:
             if (d1 is not None):
                 datestring = exif_dict[ifd].get(tag)
                 if (datestring is not None):
-                    print("Date from exif: " + str(datestring))
                     datestring = datestring.decode("utf-8", "strict") 
-                    return (datestring[0:4], datestring[5:7], datestring[8:10])
+                    if (not datestring.startswith("0000")):
+                        print("Date from exif: " + datestring)
+                        return (datestring[0:4], datestring[5:7], datestring[8:10])
 
         return None
 
@@ -81,7 +82,7 @@ class PhotoCopy:
 
 #PrintExif(r"C:\Users\g\Pictures\Gitarr\20130506_004442.jpg")
 
-#GetDateFromExif(r"C:\Users\g\Pictures\Gitarr\20130506_004442.jpg")
+#PhotoCopy.GetDateFromExif(r"\\snas\Public\Bilder\Fotoalbum\Album 2\000000\00000000.JPG")
 #allan =  PhotoCopy.CopyFile(r"C:\Users\g\Pictures\Scannat\110-film\2018-03-14_77.TIF")
 # allan = PhotoCopy.Uniquify(Path(r"C:\Users\g\Pictures\Scannat\110-film\2018-03-14_77.TIF"))
 # print(allan)
