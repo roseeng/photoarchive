@@ -1,8 +1,13 @@
+from pathlib import Path
 import json
+
 from filedata import Filedata
 
 def ReadDictionary():
     filedict = dict()
+
+    if (not Path("filedict.json").exists()):
+        return filedict
 
     with open('filedict.json') as f:
         tmpArr = json.load(f)
@@ -32,6 +37,9 @@ def FindInDict(fdata, filedict):
 def ReadTreatedFiles():
     treatedfiles = set()
 
+    if (not Path("treatedfiles.txt").exists()):
+        return treatedfiles
+
     with open('treatedfiles.txt', encoding="utf_8") as f:
         for line in f:
             a = line.split(sep=",", maxsplit=1)
@@ -47,3 +55,4 @@ def SaveTreatedFiles(treatedfiles):
             f.write(tf + "\n")
 
     print("Saved {} treated files".format(len(treatedfiles)))
+    
