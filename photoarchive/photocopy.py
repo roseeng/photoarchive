@@ -1,7 +1,7 @@
 import piexif
 import os
 import datetime
-import dateutil.parser
+
 from pathlib import Path
 import shutil
 
@@ -49,10 +49,10 @@ class PhotoCopy:
         except:
             return None
 
-        tags = [("0th", "DateTime", 306),
-                ("1st", "DateTime", 306),
-                ("Exif", "DateTimeOriginal", 36867),
-                ("Exif", "DateTimeDigitized", 36868)]
+        tags = [("Exif", "DateTimeOriginal", 36867),
+                ("Exif", "DateTimeDigitized", 36868),
+                ("0th", "DateTime", 306),
+                ("1st", "DateTime", 306) ]
 
         for ifd, _, tag in tags:
             d1 = exif_dict.get(ifd)
@@ -78,11 +78,12 @@ class PhotoCopy:
         exif_dict = piexif.load(srcpath)
         for ifd in ("0th", "Exif", "GPS", "1st"):
             for tag in exif_dict[ifd]:
-                print(ifd, piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
+                if (piexif.TAGS[ifd][tag]["name"].find("Date") >= 0):
+                    print(ifd, piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
 
 #PrintExif(r"C:\Users\g\Pictures\Gitarr\20130506_004442.jpg")
 
-#PhotoCopy.GetDateFromExif(r"\\snas\Public\Bilder\Fotoalbum\Album 2\000000\00000000.JPG")
+#PhotoCopy.PrintExif(r"C:\Users\g\Documents\Python\photoarchive\photoarchive\Bilder\2017\06\11\p104ida0112.jpg")
 #allan =  PhotoCopy.CopyFile(r"C:\Users\g\Pictures\Scannat\110-film\2018-03-14_77.TIF")
 # allan = PhotoCopy.Uniquify(Path(r"C:\Users\g\Pictures\Scannat\110-film\2018-03-14_77.TIF"))
 # print(allan)
