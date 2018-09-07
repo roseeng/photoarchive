@@ -74,16 +74,16 @@ class PhotoCopy:
         return (str(date.year), str(date.month).zfill(2), str(date.day).zfill(2))
 
     @staticmethod
-    def PrintExif(srcpath):
+    def PrintExif(srcpath, all=False):
         exif_dict = piexif.load(srcpath)
         for ifd in ("0th", "Exif", "GPS", "1st"):
             for tag in exif_dict[ifd]:
-                if (piexif.TAGS[ifd][tag]["name"].find("Date") >= 0):
+                if (all or piexif.TAGS[ifd][tag]["name"].find("Date") >= 0):
                     print(ifd, piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
 
 #PrintExif(r"C:\Users\g\Pictures\Gitarr\20130506_004442.jpg")
 
-#PhotoCopy.PrintExif(r"C:\Users\g\Documents\Python\photoarchive\photoarchive\Bilder\2017\06\11\p104ida0112.jpg")
+PhotoCopy.PrintExif(r"C:\Users\g\Documents\Python\photoarchive\photoarchive\Bilder\2006\12\15\klassfotocroppad.jpg", all=True)
 #allan =  PhotoCopy.CopyFile(r"C:\Users\g\Pictures\Scannat\110-film\2018-03-14_77.TIF")
 # allan = PhotoCopy.Uniquify(Path(r"C:\Users\g\Pictures\Scannat\110-film\2018-03-14_77.TIF"))
 # print(allan)
