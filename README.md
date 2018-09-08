@@ -1,6 +1,9 @@
 # photoarchive
 A simple tool to copy all unique photos to an archive
 
+GitHub home: https://github.com/roseeng/photoarchive
+PyPi page: https://pypi.org/project/photoarchive/
+
 ## Background
 I often backup phones and cameras, but to different places, using no consistent naming conventions, and more importantly, with no check for duplicates.
 This tool takes such a backup location and copies all image files to a better structured archive, excluding duplicates and renaming unique files with duplicate file names.
@@ -22,6 +25,7 @@ git clone https://github.com/roseeng/photoarchive
 cd photoarchive
 python __main__.py <sourcefolder>
 ```
+In this case, you'll get the archive in the same folder as th python files.
 
 ## Notes of interest
 ### Uniqueness
@@ -52,4 +56,6 @@ It is not the end of the world if it's not perfect though, the result is just mo
 When copying a file, we try to get the original date from the EXIF information. If that does not succeed, we take the creation date of the file. 
 
 That is then used to build the folder structure in the archive as: Bilder/YYYY/MM/DD.
-The files keep the old name in that folder, optionally with "-n" added if there already is a file with the same name in the folder.
+The files keep the old name in that folder, optionally with "_<n>" added if there already is a file with the same name in the folder.
+
+Yes, "Bilder/". It's swedish and hard-coded. Because I can.
