@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 
-from filedata import Filedata
+from .filedata import Filedata
 
 def ReadDictionary():
     filedict = dict()

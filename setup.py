@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='photoarchive',
-      version='0.1',
+      version='0.5',
       description='A simple tool to archive photos',
       long_description=long_description,
       long_description_content_type="text/markdown",
@@ -14,8 +14,6 @@ setup(name='photoarchive',
       license='MIT',
       packages=['photoarchive'],
       install_requires=[
-          'hashlib',
-          'json',
           'piexif',
       ],
       zip_safe=False,      

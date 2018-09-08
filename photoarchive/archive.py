@@ -1,8 +1,8 @@
 from pathlib import Path
 
 from .filedata import Filedata
-import persist
-from photocopy import PhotoCopy
+from .persist import FindInDict
+from .photocopy import PhotoCopy
 
 filetypes = { ".png", ".gif", ".jpg", ".jpeg", ".tif", ".tiff"}
 
@@ -16,7 +16,7 @@ def Manage(foldername, treatedfiles, filedict, newtreatedfiles):
                 continue
 
             if (fdata.filetype in filetypes):
-                if (persist.FindInDict(fdata, filedict)):
+                if (FindInDict(fdata, filedict)):
                     print(fdata.sourcepath + " - duplicate")
                     newtreatedfiles.append(fdata.sourcepath + ", duplicate")
                 else:
